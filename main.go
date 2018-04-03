@@ -5,7 +5,10 @@ import (
 )
 
 func main() {
-	log.Println("Hello World!")
+	// var card string = "Ace of Spades"
+	card := "Ace of Spades"
+	card = "Five of Diamonds"
+	log.Println(card)
 }
 
 
