@@ -1,7 +1,8 @@
 package main
 
-import "log"
-
+import (
+	"log"
+)
 type deck []string
 
 func (d deck) print() {
@@ -21,4 +22,8 @@ func newDeck() deck {
 		}
 	}
 	return d
+}
+
+func deal(cards int, d deck) (deck, deck) {
+	return d[:cards], d[cards:]
 }
