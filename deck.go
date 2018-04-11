@@ -4,6 +4,7 @@ import (
 	"log"
 	"strings"
 	"io/ioutil"
+	"os"
 )
 type deck []string
 
@@ -32,6 +33,16 @@ func deal(cards int, d deck) (deck, deck) {
 
 func (d deck) saveToFile(filename string) error {
 	return ioutil.WriteFile(filename, []byte(d.toString()), 0644)
+}
+
+func newDeckFromFile(filename string) deck {
+	bs, err := ioutil.ReadFile(filename)
+	if err != nil {
+		log.Println("Error:", err)
+		os.Exit(1)
+	}
+	deck := strings.Split(string(bs), ",")
+	return deck
 }
 
 func (d deck) toString() string {
