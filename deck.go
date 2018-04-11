@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"strings"
 )
 type deck []string
 
@@ -26,4 +27,8 @@ func newDeck() deck {
 
 func deal(cards int, d deck) (deck, deck) {
 	return d[:cards], d[cards:]
+}
+
+func (d deck) toString() string {
+	return strings.Join(d, ",")
 }
