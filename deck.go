@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"strings"
+	"io/ioutil"
 )
 type deck []string
 
@@ -27,6 +28,10 @@ func newDeck() deck {
 
 func deal(cards int, d deck) (deck, deck) {
 	return d[:cards], d[cards:]
+}
+
+func (d deck) saveToFile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0644)
 }
 
 func (d deck) toString() string {
