@@ -34,7 +34,7 @@ func deal(cards int, d deck) (deck, deck) {
 }
 
 func (d deck) saveToFile(filename string) error {
-	return ioutil.WriteFile(filename, []byte(d.toString()), 0644)
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
 func newDeckFromFile(filename string) deck {
