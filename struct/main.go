@@ -1,6 +1,8 @@
 package main
 
-import "log"
+import (
+	"fmt"
+)
 
 type contactInfo struct {
 	email string
@@ -21,11 +23,14 @@ func main() {
 			"johndoe@example.com", 12345,
 			},
 	}
-	log.Println(person)
+	person.print()
 
 	person.firstName = "Jane"
 	person.lastName = "Doe"
 	person.contact = contactInfo{"janedoe@example.com", 67890}
-	log.Println(person)
+	person.print()
+}
+func (p person) print() {
+	fmt.Printf("%+v \n", p)
 }
 
