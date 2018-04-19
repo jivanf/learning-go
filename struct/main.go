@@ -23,6 +23,7 @@ func main() {
 			"johndoe@example.com", 12345,
 			},
 	}
+	person.updateFirstName("Smith")
 	person.print()
 
 	person.firstName = "Jane"
@@ -34,3 +35,6 @@ func (p person) print() {
 	fmt.Printf("%+v \n", p)
 }
 
+func (p *person) updateFirstName(firstName string) {
+	(*p).firstName = firstName
+}
