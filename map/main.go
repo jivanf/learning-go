@@ -9,6 +9,7 @@ func main() {
 	 }
 
 	 colors["blue"] = "#0000ff"
+	 delete(colors, "blue")
 
 	 log.Println(colors)
 }
