@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"log"
 	"os"
+	"io"
 )
 
 func main() {
@@ -12,7 +13,5 @@ func main() {
 		log.Println("Error: ", response)
 		os.Exit(1)
 	}
-	responseBody := make([]byte, 9999)
-	response.Body.Read(responseBody)
-	log.Println(string(responseBody))
+	io.Copy(os.Stdout, response.Body)
 }
