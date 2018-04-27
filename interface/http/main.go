@@ -12,5 +12,7 @@ func main() {
 		log.Println("Error: ", response)
 		os.Exit(1)
 	}
-	log.Println(response.Body)
+	responseBody := make([]byte, 9999)
+	response.Body.Read(responseBody)
+	log.Println(string(responseBody))
 }
