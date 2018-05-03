@@ -13,13 +13,26 @@ func main() {
 		"Go Docs":"http://www.golang.org",
 		"Stack Overflow":"http://stackoverflow.com",
 	}
-	for k,v := range websites {
-		resp, err := http.Get(v)
-		if err != nil {
-			log.Println(v,"might be down!")
-			continue
-		}
-		log.Println(k,resp.Status)
 
+	c1 := make(chan string)
+	c2 := make(chan string)
+
+		for k,v := range websites {
+			go checkLink(k, v, c1, c2)
+			log.Println(<- c1, <- c2)
+
+		}
+
+}
+
+func checkLink(name string, link string, c1 chan string, c2 chan string) {
+	resp, err := http.Get(link)
+	c1 <- name
+	c2 <- resp.Status
+	if err != nil {
+		log.Println(name,"might be down!")
+		return
 	}
+
+
 }
