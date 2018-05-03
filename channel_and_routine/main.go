@@ -17,11 +17,13 @@ func main() {
 	c1 := make(chan string)
 	c2 := make(chan string)
 
-		for k,v := range websites {
+	for {
+		for k, v := range websites {
 			go checkLink(k, v, c1, c2)
-			log.Println(<- c1, <- c2)
+			log.Println(<-c1, <-c2)
 
 		}
+	}
 
 }
 
